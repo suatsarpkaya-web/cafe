@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gusto Bistro & Cafe | Online Sipariş & Rezervasyon</title>
+  <meta name="description"
+    content="Taze kahveler, enfes tatlılar ve gurme lezzetler kapınızda. Hızlı online sipariş verin." />
+
+  <!-- Google Fonts & Remix Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- HEADER & NAVIGATION -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo">
+        <i class="ri-cup-line"></i> Gusto<span>Bistro</span>
+      </a>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#home" class="nav__link active-link">Ana Sayfa</a></li>
+          <li class="nav__item"><a href="#about" class="nav__link">Hikayemiz</a></li>
+          <li class="nav__item"><a href="#menu" class="nav__link">Menü & Sipariş</a></li>
+          <li class="nav__item"><a href="#reservation" class="nav__link">Rezervasyon</a></li>
+          <li class="nav__item"><a href="#contact" class="nav__link">İletişim</a></li>
+        </ul>
+
+        <div class="nav__close" id="nav-close">
+          <i class="ri-close-line"></i>
+        </div>
+      </div>
+
+      <div class="nav__actions">
+        <!-- Sepet Butonu -->
+        <button class="cart-trigger-btn" id="cart-btn" aria-label="Sepeti Gör">
+          <i class="ri-shopping-bag-3-line"></i>
+          <span class="cart-badge" id="cart-count">0</span>
+        </button>
+
+        <a href="#reservation" class="btn btn-primary nav__res-btn">Masa Ayırt</a>
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="ri-menu-4-line"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- HERO BÖLÜMÜ (DAİRESEL DÖNEN MENÜ VİTRİNLİ) -->
+    <section class="home section" id="home">
+      <div class="home__container container grid">
+        <div class="home__content">
+          <span class="home__subtitle">EL YAPIMI LEZZETLER & ADRESE TESLİM</span>
+          <h1 class="home__title">Sıcak Bir Atmosfer, Kapınıza Gelen Lezzet.</h1>
+          <p class="home__description">
+            Özenle hazırlanan gurme menümüzden dilediğinizi seçin, Gusto Bot'un içecek tavsiyeleriyle sepetinizi
+            tamamlayıp hızlıca sipariş verin.
+          </p>
+          <div class="home__buttons">
+            <a href="#menu" class="btn btn-primary">Sipariş Ver <i class="ri-shopping-basket-line"></i></a>
+            <a href="#reservation" class="btn btn-outline"><i class="ri-calendar-check-line"></i> Rezervasyon</a>
+          </div>
+        </div>
+
+        <div class="home__image-box">
+          <div class="circular-showcase">
+            <div class="orbit-circle">
+              <div class="orbit-item item-1">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=250&auto=format&fit=crop"
+                  alt="Flat White" />
+              </div>
+              <div class="orbit-item item-2">
+                <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=250&auto=format&fit=crop"
+                  alt="Avokado Tost" />
+              </div>
+              <div class="orbit-item item-3">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=250&auto=format&fit=crop"
+                  alt="San Sebastian" />
+              </div>
+              <div class="orbit-item item-4">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=250&auto=format&fit=crop"
+                  alt="Burger" />
+              </div>
+            </div>
+
+            <div class="center-product" id="center-product">
+              <img id="center-img"
+                src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop"
+                alt="Öne Çıkan Ürün" />
+              <div class="center-badge">
+                <span id="center-title">Artisan Flat White</span>
+                <strong id="center-price">140 ₺</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENÜ & ONLİNE SİPARİŞ BÖLÜMÜ -->
+    <section class="menu-section section" id="menu">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__subtitle">GURME SEÇKİSİ</span>
+          <h2 class="section__title">Online Sipariş Menüsü</h2>
+        </div>
+
+        <div class="menu__filters">
+          <button class="menu__filter-btn active" data-filter="all">Tümü</button>
+          <button class="menu__filter-btn" data-filter="coffee">Kahveler</button>
+          <button class="menu__filter-btn" data-filter="food">Yemek & Atıştırmalık</button>
+          <button class="menu__filter-btn" data-filter="dessert">Tatlılar</button>
+        </div>
+
+        <div class="menu__container grid">
+          <!-- Ürün 1 -->
+          <article class="menu__card" data-category="coffee">
+            <div class="menu__img-wrap">
+              <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop"
+                alt="Flat White Kahve" class="menu__img" />
+            </div>
+            <div class="menu__info">
+              <div class="menu__top">
+                <h3 class="menu__title">Artisan Flat White</h3>
+                <span class="menu__price">140 ₺</span>
+              </div>
+              <p class="menu__desc">Çift shot espresso ve kadifemsi mikro köpüklü taze süt.</p>
+              <button class="btn-add-cart" data-id="1" data-name="Artisan Flat White" data-price="140"
+                data-cat="coffee">
+                <i class="ri-add-line"></i> Sepete Ekle
+              </button>
+            </div>
+          </article>
+
+          <!-- Ürün 2 -->
+          <article class="menu__card" data-category="food">
+            <div class="menu__img-wrap">
+              <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=600&auto=format&fit=crop"
+                alt="Avokado Poşe Yumurta" class="menu__img" />
+            </div>
+            <div class="menu__info">
+              <div class="menu__top">
+                <h3 class="menu__title">Avokado Poşe Tost</h3>
+                <span class="menu__price">290 ₺</span>
+              </div>
+              <p class="menu__desc">Ekşi mayalı ekmek üzerinde ezilmiş avokado ve poşe yumurta.</p>
+              <button class="btn-add-cart" data-id="2" data-name="Avokado Poşe Tost" data-price="290" data-cat="food">
+                <i class="ri-add-line"></i> Sepete Ekle
+              </button>
+            </div>
+          </article>
+
+          <!-- Ürün 3 -->
+          <article class="menu__card" data-category="dessert">
+            <div class="menu__img-wrap">
+              <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop"
+                alt="San Sebastian Cheesecake" class="menu__img" />
+            </div>
+            <div class="menu__info">
+              <div class="menu__top">
+                <h3 class="menu__title">San Sebastian Cheesecake</h3>
+                <span class="menu__price">230 ₺</span>
+              </div>
+              <p class="menu__desc">Karamelize doku, ipeksi kıvam ve Belçika çikolatası eşliğinde.</p>
+              <button class="btn-add-cart" data-id="3" data-name="San Sebastian Cheesecake" data-price="230"
+                data-cat="dessert">
+                <i class="ri-add-line"></i> Sepete Ekle
+              </button>
+            </div>
+          </article>
+
+          <!-- Ürün 4 -->
+          <article class="menu__card" data-category="coffee">
+            <div class="menu__img-wrap">
+              <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=600&auto=format&fit=crop"
+                alt="Cold Brew Kahve" class="menu__img" />
+            </div>
+            <div class="menu__info">
+              <div class="menu__top">
+                <h3 class="menu__title">Single Origin Cold Brew</h3>
+                <span class="menu__price">160 ₺</span>
+              </div>
+              <p class="menu__desc">Etiyopya çekirdeklerinden 18 saat soğuk demlenmiş ferahlatıcı lezzet.</p>
+              <button class="btn-add-cart" data-id="4" data-name="Single Origin Cold Brew" data-price="160"
+                data-cat="coffee">
+                <i class="ri-add-line"></i> Sepete Ekle
+              </button>
+            </div>
+          </article>
+
+          <!-- Ürün 5 -->
+          <article class="menu__card" data-category="food">
+            <div class="menu__img-wrap">
+              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=600&auto=format&fit=crop"
+                alt="Gurme Burger" class="menu__img" />
+            </div>
+            <div class="menu__info">
+              <div class="menu__top">
+                <h3 class="menu__title">Gusto Truffle Burger</h3>
+                <span class="menu__price">360 ₺</span>
+              </div>
+              <p class="menu__desc">160 gr dana köfte, karamelize soğan ve trüf mayonezli patates.</p>
+              <button class="btn-add-cart" data-id="5" data-name="Gusto Truffle Burger" data-price="360"
+                data-cat="food">
+                <i class="ri-add-line"></i> Sepete Ekle
+              </button>
+            </div>
+          </article>
+
+          <!-- Ürün 6 -->
+          <article class="menu__card" data-category="dessert">
+            <div class="menu__img-wrap">
+              <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600&auto=format&fit=crop"
+                alt="Antep Fıstıklı Kruvasan" class="menu__img" />
+            </div>
+            <div class="menu__info">
+              <div class="menu__top">
+                <h3 class="menu__title">Antep Fıstıklı Kruvasan</h3>
+                <span class="menu__price">210 ₺</span>
+              </div>
+              <p class="menu__desc">Fransız tereyağlı çıtır hamur, özel krema dolgusu ve toz fıstık.</p>
+              <button class="btn-add-cart" data-id="6" data-name="Antep Fıstıklı Kruvasan" data-price="210"
+                data-cat="dessert">
+                <i class="ri-add-line"></i> Sepete Ekle
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- REZERVASYON ALANI -->
+    <section class="reservation section" id="reservation">
+      <div class="reservation__container container grid">
+        <div class="reservation__content">
+          <span class="section__subtitle">KOLAY REZERVASYON</span>
+          <h2 class="section__title">Masanızı Şimdiden Ayırtın</h2>
+          <p class="reservation__description">
+            Özel buluşmalarınız ve lezzet dolu anlarınız için hemen yerinizi ayırtabilirsiniz.
+          </p>
+          <div class="reservation__contact-info">
+            <p><i class="ri-phone-line"></i> +90 (212) 000 00 00</p>
+            <p><i class="ri-map-pin-line"></i> Şair Nef'i Sok. No: 18, Kadıköy / İstanbul</p>
+          </div>
+        </div>
+
+        <form class="reservation__form" id="res-form">
+          <div class="form__group">
+            <input type="text" placeholder="Adınız Soyadınız" required class="form__input" />
+          </div>
+          <div class="form__group">
+            <input type="tel" placeholder="Telefon Numaranız" required class="form__input" />
+          </div>
+          <div class="form__row grid">
+            <input type="date" required class="form__input" />
+            <input type="time" required class="form__input" />
+          </div>
+          <div class="form__group">
+            <select class="form__input" required>
+              <option value="" disabled selected>Kişi Sayısı Seçin</option>
+              <option value="1">1 Kişi</option>
+              <option value="2">2 Kişi</option>
+              <option value="3-4">3-4 Kişi</option>
+              <option value="5+">5+ Kişi (Grup)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary form__btn">Rezervasyon Gönder</button>
+          <p class="form__feedback" id="form-feedback"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== SAĞDAN AÇILAN SEPET ÇEKMECESİ ==================== -->
+  <div class="cart-drawer-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3><i class="ri-shopping-bag-3-line"></i> Sipariş Sepetiniz</h3>
+      <button class="cart-close" id="cart-close"><i class="ri-close-line"></i></button>
+    </div>
+
+    <div class="cart-items" id="cart-items">
+      <!-- Dinamik Sepet Elemanları -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Toplam Tutar:</span>
+        <strong id="cart-total-price">0 ₺</strong>
+      </div>
+      <button class="btn btn-primary btn-checkout" id="btn-checkout">
+        Siparişi Tamamla & Öde <i class="ri-arrow-right-line"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==================== AKILLI İÇECEK ÖNERİ BOTU (GUSTO BOT) ==================== -->
+  <div class="bot-popup" id="bot-popup">
+    <div class="bot-header">
+      <div class="bot-avatar">
+        <i class="ri-robot-2-line"></i>
+      </div>
+      <div class="bot-info">
+        <h4>Gusto Lezzet Danışmanı</h4>
+        <span>Kişisel Barista Asistanınız</span>
+      </div>
+      <button class="bot-close" id="bot-close"><i class="ri-close-line"></i></button>
+    </div>
+    <div class="bot-body">
+      <p id="bot-message">Bu harika seçimin yanına soğuk demlenmiş bir kahve çok yakışır!</p>
+      <div class="bot-suggestion-card" id="bot-suggestion">
+        <img id="bot-sug-img" src="" alt="Öneri İçecek" />
+        <div class="bot-sug-details">
+          <h5 id="bot-sug-title">Single Origin Cold Brew</h5>
+          <span id="bot-sug-price">160 ₺</span>
+        </div>
+        <button class="btn-bot-add" id="btn-bot-add">Sepete Ekle</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ÖDEME & ADRES MODAL PENCERESİ ==================== -->
+  <div class="checkout-modal-overlay" id="checkout-modal">
+    <div class="checkout-modal">
+      <div class="modal-header">
+        <h3><i class="ri-secure-payment-line"></i> Güvenli Sipariş & Ödeme</h3>
+        <button class="modal-close" id="checkout-close"><i class="ri-close-line"></i></button>
+      </div>
+
+      <form class="checkout-form" id="checkout-form">
+        <div class="form-section-title">Teslimat Bilgileri</div>
+        <div class="form__row grid">
+          <input type="text" placeholder="Adınız Soyadınız" required class="form__input" />
+          <input type="tel" placeholder="Telefon (05xx...)" required class="form__input" />
+        </div>
+        <div class="form__group">
+          <textarea placeholder="Teslimat Adresiniz (Sokak, Mahalle, Bina No, Daire)" required class="form__input"
+            rows="2"></textarea>
+        </div>
+
+        <div class="form-section-title">Ödeme Yöntemi</div>
+        <div class="payment-methods">
+          <label class="payment-method-card active">
+            <input type="radio" name="payment-method" value="card" checked />
+            <i class="ri-bank-card-line"></i> Kredi / Banka Kartı
+          </label>
+          <label class="payment-method-card">
+            <input type="radio" name="payment-method" value="door" />
+            <i class="ri-hand-coin-line"></i> Kapıda Ödeme
+          </label>
+        </div>
+
+        <!-- Kart Alanı -->
+        <div class="credit-card-fields" id="card-fields">
+          <div class="form__group">
+            <input type="text" placeholder="Kart Üzerindeki İsim" class="form__input card-input" />
+          </div>
+          <div class="form__group">
+            <input type="text" maxlength="19" placeholder="Kart Numarası (0000 0000 0000 0000)"
+              class="form__input card-input" />
+          </div>
+          <div class="form__row grid">
+            <input type="text" maxlength="5" placeholder="AA/YY" class="form__input card-input" />
+            <input type="password" maxlength="3" placeholder="CVC" class="form__input card-input" />
+          </div>
+        </div>
+
+        <div class="modal-summary">
+          <span>Ödenecek Tutar:</span>
+          <strong id="modal-total-amount">0 ₺</strong>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit-payment">
+          <i class="ri-shield-check-line"></i> Siparişi Onayla
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="footer__container container grid">
+      <div class="footer__col">
+        <a href="#" class="footer__logo">Gusto<span>Bistro</span></a>
+        <p class="footer__text">Her fincanda tutku, her tabakta özen. Kadıköy'ün huzurlu lezzet noktası.</p>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__title">Çalışma Saatleri</h4>
+        <p class="footer__text">Hafta İçi: 08:30 - 23:00</p>
+        <p class="footer__text">Hafta Sonu: 09:00 - 00:00</p>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__title">Sosyal Medya</h4>
+        <div class="footer__socials">
+          <a href="#" class="footer__social-link"><i class="ri-instagram-line"></i></a>
+          <a href="#" class="footer__social-link"><i class="ri-facebook-circle-line"></i></a>
+          <a href="#" class="footer__social-link"><i class="ri-twitter-x-line"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__copy container">
+      <p>&copy; 2026 Gusto Bistro & Cafe. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
