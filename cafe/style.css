@@ -1038,9 +1038,10 @@ img {
   .footer__socials {
     justify-content: center;
   }
-}
 
-@media screen and (max-width: 768px) {
+  /* Switch to the hamburger menu at the same breakpoint the rest of the
+     layout stacks (992px). Below this the desktop nav no longer fits the
+     bar and would overlap the logo/actions. */
   .nav__menu {
     position: fixed;
     top: 0;
@@ -1084,7 +1085,9 @@ img {
   .nav__res-btn {
     display: none;
   }
+}
 
+@media screen and (max-width: 768px) {
   .home__title {
     font-size: 2.3rem;
   }
