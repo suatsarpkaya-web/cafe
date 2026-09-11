@@ -1,0 +1,12 @@
+{
+  "name": "gusto-bistro",
+  "version": "1.0.0",
+  "description": "Gusto Bistro & Cafe Landing Page",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
