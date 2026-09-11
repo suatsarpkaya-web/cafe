@@ -55,26 +55,64 @@ if (centerImg && centerTitle && centerPrice) {
   }, 3500);
 }
 
-/* ==================== KATEGORİ FİLTRELEME ==================== */
+/* ==================== KATEGORİ FİLTRELEME + ARAMA ==================== */
 const filterBtns = document.querySelectorAll(".menu__filter-btn");
 const menuCards = document.querySelectorAll(".menu__card");
+const menuContainer = document.querySelector(".menu__container");
+const menuSearch = document.getElementById("menu-search");
+
+let activeCategory = "all";
+let searchQuery = "";
+
+function applyMenuFilters() {
+  let visibleCount = 0;
+
+  menuCards.forEach((card) => {
+    const category = card.getAttribute("data-category");
+    const title = card.querySelector(".menu__title").textContent.toLowerCase();
+    const desc = card.querySelector(".menu__desc").textContent.toLowerCase();
+
+    const matchCategory =
+      activeCategory === "all" || activeCategory === category;
+    const matchSearch =
+      searchQuery === "" ||
+      title.includes(searchQuery) ||
+      desc.includes(searchQuery);
+
+    const show = matchCategory && matchSearch;
+    card.classList.toggle("hide", !show);
+    if (show) visibleCount += 1;
+  });
+
+  // "Sonuç yok" mesajını yönet
+  let emptyMsg = menuContainer.querySelector(".menu__no-results");
+  if (visibleCount === 0) {
+    if (!emptyMsg) {
+      emptyMsg = document.createElement("p");
+      emptyMsg.className = "menu__no-results";
+      menuContainer.appendChild(emptyMsg);
+    }
+    emptyMsg.textContent = `"${menuSearch.value}" için sonuç bulunamadı.`;
+  } else if (emptyMsg) {
+    emptyMsg.remove();
+  }
+}
 
 filterBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     filterBtns.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
-    const filter = btn.getAttribute("data-filter");
-
-    menuCards.forEach((card) => {
-      const category = card.getAttribute("data-category");
-      if (filter === "all" || filter === category) {
-        card.classList.remove("hide");
-      } else {
-        card.classList.add("hide");
-      }
-    });
+    activeCategory = btn.getAttribute("data-filter");
+    applyMenuFilters();
   });
 });
+
+if (menuSearch) {
+  menuSearch.addEventListener("input", (e) => {
+    searchQuery = e.target.value.trim().toLowerCase();
+    applyMenuFilters();
+  });
+}
 
 /* ==================== ONLINE SEPET YÖNETİMİ ==================== */
 let cart = [];
@@ -98,9 +136,13 @@ function toggleCart(open = true) {
   }
 }
 
+const bottomCartBtn = document.getElementById("bottom-cart-btn");
+const bottomCartCount = document.getElementById("bottom-cart-count");
+
 cartBtn.addEventListener("click", () => toggleCart(true));
 cartClose.addEventListener("click", () => toggleCart(false));
 cartOverlay.addEventListener("click", () => toggleCart(false));
+if (bottomCartBtn) bottomCartBtn.addEventListener("click", () => toggleCart(true));
 
 // Sepete Ürün Ekle
 function addToCart(id, name, price) {
@@ -131,6 +173,10 @@ function updateCartUI() {
 
   cartCount.textContent = totalCount;
   cartTotalPrice.textContent = `${totalPrice} ₺`;
+  if (bottomCartCount) {
+    bottomCartCount.textContent = totalCount;
+    bottomCartCount.style.display = totalCount > 0 ? "flex" : "none";
+  }
 
   if (cart.length === 0) {
     cartItemsContainer.innerHTML =
@@ -301,3 +347,42 @@ if (resForm) {
     }, 5000);
   });
 }
+
+/* ==================== AKTİF SEKME TAKİBİ (SCROLL SPY) ==================== */
+const spyMap = [
+  { id: "home", el: document.getElementById("home") },
+  { id: "menu", el: document.getElementById("menu") },
+  { id: "reservation", el: document.getElementById("reservation") },
+];
+const bottomItems = document.querySelectorAll(".bottom-nav__item[data-section]");
+const topLinks = document.querySelectorAll(".nav__link");
+
+function setActiveSection(id) {
+  bottomItems.forEach((item) => {
+    item.classList.toggle("active", item.getAttribute("data-section") === id);
+  });
+  topLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    link.classList.toggle("active-link", href === `#${id}`);
+  });
+}
+
+function onScrollSpy() {
+  const trigger = window.scrollY + window.innerHeight * 0.35;
+  let current = "home";
+  spyMap.forEach((s) => {
+    if (s.el && s.el.offsetTop <= trigger) current = s.id;
+  });
+  setActiveSection(current);
+}
+
+window.addEventListener("scroll", onScrollSpy, { passive: true });
+onScrollSpy();
+
+// Alt sekmedeki bağlantılara tıklanınca da hemen aktif olsun
+bottomItems.forEach((item) => {
+  const section = item.getAttribute("data-section");
+  if (section) {
+    item.addEventListener("click", () => setActiveSection(section));
+  }
+});
