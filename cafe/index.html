@@ -117,6 +117,12 @@
           <h2 class="section__title">Online Sipariş Menüsü</h2>
         </div>
 
+        <div class="menu__search-wrap">
+          <i class="ri-search-line"></i>
+          <input type="text" id="menu-search" class="menu__search" placeholder="Menüde ara (kahve, tatlı, burger...)"
+            aria-label="Menüde ara" />
+        </div>
+
         <div class="menu__filters">
           <button class="menu__filter-btn active" data-filter="all">Tümü</button>
           <button class="menu__filter-btn" data-filter="coffee">Kahveler</button>
@@ -414,6 +420,27 @@
       <p>&copy; 2026 Gusto Bistro & Cafe. Tüm hakları saklıdır.</p>
     </div>
   </footer>
+
+  <!-- ==================== MOBİL ALT SEKME ÇUBUĞU (FOOD APP TARZI) ==================== -->
+  <nav class="bottom-nav" id="bottom-nav" aria-label="Mobil Navigasyon">
+    <a href="#home" class="bottom-nav__item active" data-section="home">
+      <i class="ri-home-5-line"></i>
+      <span>Ana Sayfa</span>
+    </a>
+    <a href="#menu" class="bottom-nav__item" data-section="menu">
+      <i class="ri-restaurant-2-line"></i>
+      <span>Menü</span>
+    </a>
+    <a href="#reservation" class="bottom-nav__item" data-section="reservation">
+      <i class="ri-calendar-check-line"></i>
+      <span>Rezervasyon</span>
+    </a>
+    <button class="bottom-nav__item bottom-nav__cart" id="bottom-cart-btn" type="button" aria-label="Sepeti Gör">
+      <i class="ri-shopping-bag-3-line"></i>
+      <span>Sepet</span>
+      <span class="bottom-nav__badge" id="bottom-cart-count">0</span>
+    </button>
+  </nav>
 
   <script src="script.js"></script>
 </body>
